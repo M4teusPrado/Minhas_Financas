@@ -23,9 +23,21 @@ public class UsuarioRepositoryTest {
         repository.save(user);
 
         //Ação / Execução
-        boolean resultado = repository.existsByEmail(user.getEmail());
+        boolean resultado = repository.existsByEmail("usuario@gmail.com");
 
         //Verificação
         Assertions.assertThat(resultado).isTrue();
+    }
+
+    @Test
+    public void deveRetornarFalsoQuandoNaoHouverUsuarioCadastradoComOEmail(){
+            //Cenario
+            repository.deleteAll();
+    
+            //Ação / Execução
+            boolean resultado = repository.existsByEmail("usuario@gmail.com");
+    
+            //Verificação
+            Assertions.assertThat(resultado).isFalse();
     }
 }
