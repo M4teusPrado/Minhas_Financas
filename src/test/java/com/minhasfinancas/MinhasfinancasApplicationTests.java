@@ -1,4 +1,4 @@
-package com.minhasfinancas.minhasfinancas;
+package com.minhasfinancas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
