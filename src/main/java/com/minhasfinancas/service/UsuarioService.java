@@ -4,7 +4,7 @@ import com.minhasfinancas.model.Usuario;
 
 public interface UsuarioService {
     
-    Usuario autenticar(String name, String senha);
+    Usuario autenticar(String email, String senha);
 
     Usuario salvarUsuario(Usuario usuario);
 

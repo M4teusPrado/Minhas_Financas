@@ -11,6 +11,7 @@ import com.minhasfinancas.repository.UsuarioRepository;
 import com.minhasfinancas.service.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Autowired
     private UsuarioRepository repository;
+
+    public UsuarioServiceImpl(UsuarioRepository repository2) {
+    }
 
     @Override
     public Usuario autenticar(String email, String senha) {
@@ -46,7 +50,10 @@ public class UsuarioServiceImpl implements UsuarioService{
     public void validarEmail(String email) {
         boolean op = repository.existsByEmail(email);
         if(op) {
-            throw new RegraDeNegocioException("Ja existe um usuario cadastrado com esse email");
+            throw new RegraDeNegocioException(
+                                HttpStatus.BAD_REQUEST,
+                                "Ja existe um usuario cadastrado com esse email"
+                                );
         }
     }
     
