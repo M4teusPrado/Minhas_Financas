@@ -6,7 +6,6 @@ import com.minhasfinancas.dto.UsuarioDTO;
 import com.minhasfinancas.model.Usuario;
 import com.minhasfinancas.service.UsuarioService;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +20,14 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService service;
+
+    @PostMapping("/autenticar")
+    public ResponseEntity<Usuario> autenticar( @RequestBody UsuarioDTO dto ) {
+
+        Usuario usuarioAutenticacao = service.autenticar(dto.getEmail(), dto.getSenha());
+
+        return ResponseEntity.ok(usuarioAutenticacao);
+    }
 
     @PostMapping
     public ResponseEntity<Usuario> salvar( @RequestBody UsuarioDTO dto ) {
