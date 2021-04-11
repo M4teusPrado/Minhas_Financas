@@ -20,13 +20,16 @@ import com.minhasfinancas.model.enums.TipoLancamento;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(schema = "financas")
 @Data
-@Builder
+
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lancamento {
     
     @Id
